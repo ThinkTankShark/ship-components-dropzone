@@ -1,0 +1,283 @@
+/* Color Variables */
+$primary-red-color: color($red500);
+$secondary-red-color: color($redA200);
+
+$primary-pink-color: color($pink500);
+$secondary-pink-color: color($pinkA200);
+
+$primary-purple-color: color($purple500);
+$secondary-purple-color: color($purpleA200);
+
+$primary-deepPurple-color: color($deepPurple500);
+$secondary-deepPurple-color: color($deepPurpleA200);
+
+$primary-indigo-color: color($indigo500);
+$secondary-indigo-color: color($indigoA200);
+
+$primary-blue-color: color($blue500);
+$secondary-blue-color: color($blueA200);
+
+$primary-lightBlue-color: color($lightBlue500);
+$secondary-lightBlue-color: color($lightBlueA200);
+
+$primary-cyan-color: color($cyan500);
+$secondary-cyan-color: color($cyanA200);
+
+$primary-teal-color: color($teal500);
+$secondary-teal-color: color($tealA200);
+
+$primary-green-color: color($green500);
+$secondary-green-color: color($greenA200);
+
+$primary-lightGreen-color: color($lightGreen500);
+$secondary-lightGreen-color: color($lightGreenA200);
+
+$primary-lime-color: color($lime500);
+$secondary-lime-color: color($limeA200);
+
+$primary-yellow-color: color($yellow500);
+$secondary-yellow-color: color($yellowA200);
+
+$primary-amber-color: color($amber500);
+$secondary-amber-color: color($amberA200);
+
+$primary-orange-color: color($orange500);
+$secondary-orange-color: color($orangeA200);
+
+$primary-deepOrange-color: color($deepOrange500);
+$secondary-deepOrange-color: color($deepOrangeA200);
+
+$primary-brown-color: color($brown500);
+$secondary-brown-color: color($brown300);
+
+$primary-blueGrey-color: color($blueGrey500);
+$secondary-blueGrey-color: color($blueGrey300);
+
+$primary-grey-color: color($grey500);
+$secondary-grey-color: color($grey300);
+
+$primary-black-color: color($black);
+$primary-white-color: color($white);
+
+.uploadButtonContainer {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  margin-left: 50px;
+}
+
+/* Input button type = file */
+input[type="file"].inputHidden {
+  display: none;
+}
+
+/* Text inside the button */
+.buttonTextSpan {
+  font-weight: 400;
+  font-family: $font-family;
+  line-height: 32px;
+}
+
+/* Input button type = checkbox */
+input[type="checkbox"].toggle {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+/* button styles */
+.animationButton {
+  display: inline-block;
+  position: relative;
+  width: 120px; height: 32px;
+  text-align: center;
+  color: white;
+  border-radius: 2px;
+  top: 25px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 0;
+
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+
+  &.raised {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /*transition-delay: 0.2s;*/
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    $:acive {
+      opacity: 1;
+    }
+  }
+}
+
+/* CSS before animations settings for the button */
+.anim {
+  transform: translateY(-50%) translateX(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+
+  /*  The ':before' psuedo element is a spacing ghost to make the
+    ':after' psuedo element a square, with width & height
+    automatically equal to the parent's width. */
+  &:before {
+    position: relative;
+    content: '';
+    display: block;
+    margin-top: 100%;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+  }
+}
+
+/* CSS animations for button on hover */
+.hoverable:hover > .anim {
+  animation: anim-out 0.75s;
+  &:after {
+    animation: anim-out-pseudo 0.75s;
+  }
+}
+
+.default {
+  background-color: #fff;
+}
+
+.primary-disabled {
+  background-color: #eeeeee;
+  color: #686868;
+}
+
+/* Button Primary Styles */
+.primary {
+  &-red         {     background-color: color($primary-red-color);          }
+  &-pink        {     background-color: color($primary-pink-color);         }
+  &-purple      {     background-color: color($primary-purple-color);       }
+  &-deepPurple  {     background-color: color($primary-deepPurple-color);   }
+  &-indigo      {     background-color: color($primary-indigo-color);       }
+  &-blue        {     background-color: color($primary-blue-color);         }
+  &-lightBlue   {     background-color: color($primary-lightBlue-color);    }
+  &-cyan        {     background-color: color($primary-cyan-color);         }
+  &-teal        {     background-color: color($primary-teal-color);         }
+  &-green       {     background-color: color($primary-green-color);        }
+  &-lightGreen  {     background-color: color($primary-lightGreen-color);   }
+  &-lime        {     background-color: color($primary-lime-color);         }
+  &-yellow      {     background-color: color($primary-yellow-color);       }
+  &-amber       {     background-color: color($primary-amber-color);        }
+  &-orange      {     background-color: color($primary-orange-color);       }
+  &-deepOrange  {     background-color: color($primary-orange-color);       }
+  &-brown       {     background-color: color($primary-brown-color);        }
+  &-blueGrey    {     background-color: color($primary-blueGrey-color);     }
+  &-grey        {     background-color: color($primary-grey-color);         }
+  &-black       {     background-color: color($primary-black-color);        }
+  &-white       {
+    background-color: color($primary-white-color);
+    color: #686868;
+  }
+}
+
+/* Button Secondary Styles */
+.secondary {
+  &-red         {     background-color: color($secondary-red-color);        }
+  &-pink        {     background-color: color($secondary-pink-color);       }
+  &-purple      {     background-color: color($secondary-purple-color);     }
+  &-deepPurple  {     background-color: color($secondary-deepPurple-color); }
+  &-indigo      {     background-color: color($secondary-indigo-color);     }
+  &-blue        {     background-color: color($secondary-blue-color);       }
+  &-lightBlue   {     background-color: color($secondary-lightBlue-color);  }
+  &-cyan        {     background-color: color($secondary-cyan-color);       }
+  &-teal        {     background-color: color($secondary-teal-color);       }
+  &-green       {     background-color: color($secondary-green-color);      }
+  &-lightGreen  {     background-color: color($secondary-lightGreen-color); }
+  &-lime        {     background-color: color($secondary-lime-color);       }
+  &-yellow      {     background-color: color($secondary-yellow-color);     }
+  &-amber       {     background-color: color($secondary-amber-color);      }
+  &-orange      {     background-color: color($secondary-orange-color);     }
+  &-deepOrange  {     background-color: color($secondary-deepOrange-color); }
+  &-brown       {     background-color: color($secondary-brown-color);      }
+  &-blueGrey    {     background-color: color($secondary-blueGrey-color);   }
+  &-grey        {     background-color: color($secondary-grey-color);       }
+}
+
+/* Apply shadow and opacity mixins when button is clicked  */
+.primary {
+  &-red:active        { @mixin activeButton; }
+  &-pink:active       { @mixin activeButton; }
+  &-purple:active     { @mixin activeButton; }
+  &-deepPurple:active { @mixin activeButton; }
+  &-indigo:active     { @mixin activeButton; }
+  &-blue:active       { @mixin activeButton; }
+  &-lightBlue:active  { @mixin activeButton; }
+  &-cyan:active       { @mixin activeButton; }
+  &-teal:active       { @mixin activeButton; }
+  &-green:active      { @mixin activeButton; }
+  &-lightGreen:active { @mixin activeButton; }
+  &-lime:active       { @mixin activeButton; }
+  &-yellow:active     { @mixin activeButton; }
+  &-amber:active      { @mixin activeButton; }
+  &-orange:active     { @mixin activeButton; }
+  &-deepOrange:active { @mixin activeButton; }
+  &-brown:active      { @mixin activeButton; }
+  &-blueGrey:active   { @mixin activeButton; }
+  &-grey:active       { @mixin activeButton; }
+  &-black:active      { @mixin activeButton; }
+}
+
+/* Button Keyframe animations */
+@keyframes anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}

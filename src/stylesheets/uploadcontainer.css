@@ -1,0 +1,10 @@
+$font-family: 'RobotoDraft, Helvetica Neue, Helvetica, Arial';
+
+.uploadContainerWrapper {
+  font-family: $font-family;
+  margin: 20px auto;
+  position: relative;
+  height: 100px;
+  width: 500px;
+  background-color: transparent;
+}

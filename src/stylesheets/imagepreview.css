@@ -1,0 +1,18 @@
+.img {
+  position: absolute;
+  left: 100px;
+  padding: 5px;
+  float: left;
+  margin: auto;
+  width: 4em;
+  height: 4em;
+  border-radius: 15px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}

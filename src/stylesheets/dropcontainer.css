@@ -1,0 +1,67 @@
+.dropzoneContainer {
+  background-color: transparent;
+  margin: 5px auto;
+  height: 80%;
+  position: relative;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.innerFlexContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.formWrapper {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.dragBorder {
+  border: 1px dashed black;
+  border-radius: 2px;
+}
+
+.correctFormat {
+  border: 2px solid #00852c;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 133, 44, 1);
+}
+
+.correctFormat::before {
+  content: 'Correct Format';
+  margin: auto;
+  padding: auto;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+  color: #00852c;
+}
+
+.incorrectFormat {
+  border: 2px solid #ff7575;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(255, 117, 117, 1);
+}
+
+.incorrectFormat::before {
+  content: 'Incorrect Format: Please Try Again';
+  margin: auto;
+  padding: auto;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+  color: #ff7575;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline-block;
+}
