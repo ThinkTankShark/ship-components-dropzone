@@ -74,12 +74,12 @@ module.exports = {
         mixins: require('../../src/stylesheets/mixins.js')
     }),
     require('postcss-simple-vars')({
-        variables: function() {
-            return assign(
-                require('../../src/stylesheets/colorVariables'),
-                require('../../src/stylesheets/fontVariables.js')
-            );
-        }
+      variables: function() {
+        return assign(
+          require('../../src/stylesheets/colorVariables'),
+          require('../../src/stylesheets/fontVariables.js')
+        );
+      }
     }),
     require('postcss-color-hex-alpha'),
     require('postcss-color-function'),

@@ -24,7 +24,6 @@ module.exports = function(grunt) {
      * @type    {String}
      */
     dir = require('path').resolve(dir);
-    console.log(dir);
     /**
      * Interal collection of modules loaded
      *

@@ -30,9 +30,10 @@ export default class ImagePreview extends React.Component {
       * @return {String}
    */
    toggleImage () {
-      let image = this.props.imgSrc,
-         imgShow = classNames(css.img, css.show),
-         imgHide = classNames(css.img, css.hide);
+      let image = this.props.imgSrc;
+      let imgShow = classNames(css.img, css.show);
+      let imgHide = classNames(css.img, css.hide);
+
       return image === '' ? imgHide : imgShow;
    }
 

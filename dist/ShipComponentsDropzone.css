@@ -1,0 +1,558 @@
+.dropcontainer--dropzoneContainer {
+  background-color: transparent;
+  margin: 5px auto;
+  height: 80%;
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.dropcontainer--innerFlexContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dropcontainer--formWrapper {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.dropcontainer--dragBorder {
+  border: 1px dashed black;
+  border-radius: 2px;
+}
+
+.dropcontainer--correctFormat {
+  border: 2px solid #00852c;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 133, 44, 1);
+}
+
+.dropcontainer--correctFormat::before {
+  content: 'Correct Format';
+  margin: auto;
+  padding: auto;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+  color: #00852c;
+}
+
+.dropcontainer--incorrectFormat {
+  border: 2px solid #ff7575;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(255, 117, 117, 1);
+}
+
+.dropcontainer--incorrectFormat::before {
+  content: 'Incorrect Format: Please Try Again';
+  margin: auto;
+  padding: auto;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1em;
+  color: #ff7575;
+}
+
+.dropcontainer--hide {
+  display: none;
+}
+
+.dropcontainer--show {
+  display: inline-block;
+}
+/* Color Variables */
+
+.uploadbutton--uploadButtonContainer {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  margin-left: 50px;
+}
+
+/* Input button type = file */
+input[type="file"].uploadbutton--inputHidden {
+  display: none;
+}
+
+/* Text inside the button */
+.uploadbutton--buttonTextSpan {
+  font-weight: 400;
+  font-family: RobotoDraft, Helvetica Neue, Helvetica, Arial;
+  line-height: 32px;
+}
+
+/* Input button type = checkbox */
+input[type="checkbox"].uploadbutton--toggle {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+input[type="checkbox"].uploadbutton--toggle:focus {
+  outline: 0;
+}
+
+/* button styles */
+.uploadbutton--animationButton {
+  display: inline-block;
+  position: relative;
+  width: 120px; height: 32px;
+  text-align: center;
+  color: white;
+  border-radius: 2px;
+  top: 25px;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 0;
+
+  -webkit-user-select: none;
+
+     -moz-user-select: none;
+
+      -ms-user-select: none;
+
+          user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+.uploadbutton--animationButton.uploadbutton--raised {
+  -webkit-transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);/*transition-delay: 0.2s;*/
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.uploadbutton--animationButton.uploadbutton--raised $:acive {
+  opacity: 1;
+}
+
+/* CSS before animations settings for the button */
+.uploadbutton--anim {
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
+/*  The ':before' psuedo element is a spacing ghost to make the
+    ':after' psuedo element a square, with width & height
+    automatically equal to the parent's width. */
+.uploadbutton--anim:before {
+  position: relative;
+  content: '';
+  display: block;
+  margin-top: 100%;
+}
+.uploadbutton--anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+}
+
+/* CSS animations for button on hover */
+.uploadbutton--hoverable:hover > .uploadbutton--anim {
+  -webkit-animation: uploadbutton--anim-out 0.75s;
+          animation: uploadbutton--anim-out 0.75s;
+}
+.uploadbutton--hoverable:hover > .uploadbutton--anim:after {
+  -webkit-animation: uploadbutton--anim-out-pseudo 0.75s;
+          animation: uploadbutton--anim-out-pseudo 0.75s;
+}
+
+.uploadbutton--default {
+  background-color: #fff;
+}
+
+.uploadbutton--primary-disabled {
+  background-color: #eeeeee;
+  color: #686868;
+}
+
+/* Button Primary Styles */
+.uploadbutton--primary-red         {
+  background-color: rgb(244, 67, 54);
+}
+.uploadbutton--primary-pink        {
+  background-color: rgb(233, 30, 99);
+}
+.uploadbutton--primary-purple      {
+  background-color: rgb(156, 39, 176);
+}
+.uploadbutton--primary-deepPurple  {
+  background-color: rgb(103, 58, 183);
+}
+.uploadbutton--primary-indigo      {
+  background-color: rgb(63, 81, 181);
+}
+.uploadbutton--primary-blue        {
+  background-color: rgb(33, 150, 243);
+}
+.uploadbutton--primary-lightBlue   {
+  background-color: rgb(3, 169, 244);
+}
+.uploadbutton--primary-cyan        {
+  background-color: rgb(0, 188, 212);
+}
+.uploadbutton--primary-teal        {
+  background-color: rgb(0, 150, 136);
+}
+.uploadbutton--primary-green       {
+  background-color: rgb(76, 175, 80);
+}
+.uploadbutton--primary-lightGreen  {
+  background-color: rgb(139, 195, 74);
+}
+.uploadbutton--primary-lime        {
+  background-color: rgb(205, 220, 57);
+}
+.uploadbutton--primary-yellow      {
+  background-color: rgb(255, 235, 59);
+}
+.uploadbutton--primary-amber       {
+  background-color: rgb(255, 193, 7);
+}
+.uploadbutton--primary-orange      {
+  background-color: rgb(255, 152, 0);
+}
+.uploadbutton--primary-deepOrange  {
+  background-color: rgb(255, 152, 0);
+}
+.uploadbutton--primary-brown       {
+  background-color: rgb(121, 85, 72);
+}
+.uploadbutton--primary-blueGrey    {
+  background-color: rgb(96, 125, 139);
+}
+.uploadbutton--primary-grey        {
+  background-color: rgb(158, 158, 158);
+}
+.uploadbutton--primary-black       {
+  background-color: rgb(0, 0, 0);
+}
+.uploadbutton--primary-white       {
+  background-color: rgb(255, 255, 255);
+  color: #686868;
+}
+
+/* Button Secondary Styles */
+.uploadbutton--secondary-red         {
+  background-color: rgb(255, 82, 82);
+}
+.uploadbutton--secondary-pink        {
+  background-color: rgb(255, 64, 129);
+}
+.uploadbutton--secondary-purple      {
+  background-color: rgb(224, 64, 251);
+}
+.uploadbutton--secondary-deepPurple  {
+  background-color: rgb(124, 77, 255);
+}
+.uploadbutton--secondary-indigo      {
+  background-color: rgb(83, 109, 254);
+}
+.uploadbutton--secondary-blue        {
+  background-color: rgb(68, 138, 255);
+}
+.uploadbutton--secondary-lightBlue   {
+  background-color: rgb(64, 196, 255);
+}
+.uploadbutton--secondary-cyan        {
+  background-color: rgb(24, 255, 255);
+}
+.uploadbutton--secondary-teal        {
+  background-color: rgb(100, 255, 218);
+}
+.uploadbutton--secondary-green       {
+  background-color: rgb(105, 240, 174);
+}
+.uploadbutton--secondary-lightGreen  {
+  background-color: rgb(178, 255, 89);
+}
+.uploadbutton--secondary-lime        {
+  background-color: rgb(238, 255, 65);
+}
+.uploadbutton--secondary-yellow      {
+  background-color: rgb(255, 255, 0);
+}
+.uploadbutton--secondary-amber       {
+  background-color: rgb(255, 215, 64);
+}
+.uploadbutton--secondary-orange      {
+  background-color: rgb(255, 171, 64);
+}
+.uploadbutton--secondary-deepOrange  {
+  background-color: rgb(255, 110, 64);
+}
+.uploadbutton--secondary-brown       {
+  background-color: rgb(161, 136, 127);
+}
+.uploadbutton--secondary-blueGrey    {
+  background-color: rgb(144, 164, 174);
+}
+.uploadbutton--secondary-grey        {
+  background-color: rgb(224, 224, 224);
+}
+
+/* Apply shadow and opacity mixins when button is clicked  */
+.uploadbutton--primary-red:active        {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-pink:active       {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-purple:active     {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-deepPurple:active {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-indigo:active     {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-blue:active       {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-lightBlue:active  {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-cyan:active       {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-teal:active       {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-green:active      {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-lightGreen:active {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-lime:active       {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-yellow:active     {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-amber:active      {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-orange:active     {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-deepOrange:active {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-brown:active      {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-blueGrey:active   {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-grey:active       {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+.uploadbutton--primary-black:active      {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  opacity: 0.5;
+  color: white;
+}
+
+/* Button Keyframe animations */
+@-webkit-keyframes uploadbutton--anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes uploadbutton--anim-in {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes uploadbutton--anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes uploadbutton--anim-in-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes uploadbutton--anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes uploadbutton--anim-out {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes uploadbutton--anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes uploadbutton--anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    background: transparent;
+  }
+}
+.imagepreview--img {
+  position: absolute;
+  left: 100px;
+  padding: 5px;
+  float: left;
+  margin: auto;
+  width: 4em;
+  height: 4em;
+  border-radius: 15px;
+}
+
+.imagepreview--hide {
+  visibility: hidden;
+}
+
+.imagepreview--show {
+  visibility: visible;
+}.uploadcontainer--uploadContainerWrapper {
+  font-family: 'RobotoDraft, Helvetica Neue, Helvetica, Arial';
+  margin: 20px auto;
+  position: relative;
+  height: 100px;
+  width: 500px;
+  background-color: transparent;
+}
+
+/*# sourceMappingURL=ShipComponentsDropzone.css.map*/

@@ -85,14 +85,20 @@ export default class UploadButton extends React.Component {
                className={css.toggle}
                ref='inputCheckbox'
             />
-            <div
-               className={css.anim}>
-            </div>
-            <span className={css.buttonTextSpan}>{this.props.buttonLabel || 'Upload'}</span>
+            <div className={css.anim}></div>
+            <span className={css.buttonTextSpan}>{this.props.buttonLabel}</span>
          </div>
       );
    }
 }
+
+/**
+ * Defaults
+ * @type {Object}
+ */
+UploadButton.defaultProps = {
+   buttonLabel: 'upload'
+};
 
 /**
  * Type Checks

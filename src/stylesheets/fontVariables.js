@@ -1,5 +1,5 @@
 /* font Variables */
 
 module.exports = {
-   'font-family': 'RobotoDraft, Helvetica Neue, Helvetica, Arial'
+   'primary-font': 'RobotoDraft, Helvetica Neue, Helvetica, Arial'
 }

@@ -44,15 +44,17 @@ export default class DropContainer extends React.Component {
       // This is tricky. During the drag even the dataTransfer.
       // files is null But Chrome implements some drag store,
       // which is accesible via dataTransfer.items
-      const dataTransferItems = this.extractData(event),
+      const dataTransferItems = this.extractData(event);
 
       // Now we need to convert the DataTransferList to Array
-      fileFormat = this.fileFormatFinder(this.props.accept),
+      const fileFormat = this.fileFormatFinder(this.props.accept);
 
       // Check to make sure file is valid based on
       // user's file format input
-      isFileValid = this.validateFileFormat(
-         Array.prototype.slice.call(dataTransferItems), fileFormat);
+      const isFileValid = this.validateFileFormat(
+         Array.prototype.slice.call(dataTransferItems),
+         fileFormat
+      );
 
       this.setState({
          isDragActive: isFileValid,
@@ -97,14 +99,6 @@ export default class DropContainer extends React.Component {
          dropzoneStyle: '',
          visibility: 'show'
       });
-
-      // if (this.props.onDragLeave) {
-      //    this.props.onDragLeave.call(this, event);
-      // }
-
-      if(this.state.imageFile){
-         return;
-      }
   }
 
    /**
@@ -118,6 +112,7 @@ export default class DropContainer extends React.Component {
          dropzoneStyle: '',
          visibility: 'show'
       });
+
       // Call handleChange function
       this.handleChange.call(this, event);
    }
@@ -138,10 +133,13 @@ export default class DropContainer extends React.Component {
       * @param  {Event]} event
    */
    handleChange (event) {
-      let e = event.nativeEvent,
-         dataTransferItems = this.extractData(event),
-         fileFormat = this.fileFormatFinder(this.props.accept),
-         isFileValid = this.validateFileFormat(Array.prototype.slice.call(dataTransferItems), fileFormat);
+      let e = event.nativeEvent;
+      let dataTransferItems = this.extractData(event);
+      let fileFormat = this.fileFormatFinder(this.props.accept);
+      let isFileValid = this.validateFileFormat(
+         Array.prototype.slice.call(dataTransferItems),
+         fileFormat
+      );
 
       // Check to make sure the dropped file
       // is in correct format - e.g image/*
@@ -149,7 +147,7 @@ export default class DropContainer extends React.Component {
          let eventFile = e.dataTransfer || event.target;
 
          if(eventFile) {
-            this.dragAndDropFileUrlGenerator(eventFile)
+            this.dragAndDropFileUrlGenerator(eventFile);
          } else {
             this.inputButtonFileUrlGenerator(eventFile);
          }
@@ -159,45 +157,43 @@ export default class DropContainer extends React.Component {
    dragAndDropFileUrlGenerator (eventFile) {
       let file = eventFile.files[0], uploadFile;
 
-      if(typeof file !== undefined) {
+      if(typeof file !== 'undefined') {
          uploadFile = URL.createObjectURL(file);
 
          this.setState({
             fileSrc: uploadFile
          });
+
+         this.props.onAdd(file);
       }
    }
 
    inputButtonFileUrlGenerator (eventFile) {
       let uploadFile;
-      if(typeof eventFile !== undefined) {
+
+      if(typeof eventFile !== 'undefined') {
          uploadFile = URL.createObjectURL(eventFile);
 
          this.setState({
             fileSrc: uploadFile
          });
+
+         this.props.onAdd(uploadFile);
       }
    }
 
    /**
-      * Handle file type validation
-      * make sure the file is an image
-      * @param  {Event]} event
-      * @return {object}
-   */
+    * Handle file type validation
+    * make sure the file is an image
+    * @param  {Event]} event
+    * @return {object}
+    */
    extractData (event) {
       return event.dataTransfer && event.dataTransfer.items ?
                event.dataTransfer.items : [];
    }
 
    fileFormatFinder (props) {
-      // const FILE_FORMATS = {
-      //    image: /\.jpg | \.jpeg | \.gif | \.png/,
-      //    text: /\.txt | \.doc | \.docs/,
-      //    zip: /\.zip | \.tar/,
-      //    video: /\.mov | \.mpeg | \.mpg | \.avi | \.mkv | \.wmv/,
-      //    music: /\.m1v | \.mp2 | \.mp3 | \.mpa | \.mpe | \.m3u/
-      // }
       const FILE_FORMATS = {
          image: 'image/*',
          text: 'text/*',
@@ -211,21 +207,21 @@ export default class DropContainer extends React.Component {
    }
 
    /**
-      * Handle file type validation
-      * make sure the file is an image
-      * @param  {Event]} event
-      * @return {bool}
-   */
+    * Handle file type validation
+    * make sure the file is an image
+    * @param  {Event]} event
+    * @return {bool}
+    */
    validateFileFormat (file, fileFormat) {
       return file.every(f => accepts(f, fileFormat));
    }
 
 
    /**
-      * Handle border color
-      * if file type is correct
-      * make border GREEN
-   */
+    * Handle border color
+    * if file type is correct
+    * make border GREEN
+    */
    correctFormatBorderStyle () {
       this.setState({
          dropzoneStyle: 'correctFormat'
@@ -233,21 +229,22 @@ export default class DropContainer extends React.Component {
    }
 
    /**
-      * Handle border color
-      * if file type is incorrect
-      * make border RED
-   */
+    * Handle border color
+    * if file type is incorrect
+    * make border RED
+    */
    incorrectFormatBorderStyle () {
       this.setState({ dropzoneStyle: 'incorrectFormat' });
    }
 
    render () {
       // define styles
-      let { dropzoneStyle, visibility } = this.state,
-         dropContainerStyle = classNames(css.dropzoneContainer, css[dropzoneStyle]);
+      let { dropzoneStyle, visibility } = this.state;
+      let dropContainerStyle = classNames(css.dropzoneContainer, css[dropzoneStyle]);
 
       return (
          <section
+            ref='dropContainer'
             className={dropContainerStyle}
             onDragOver={this.onDragOver}
             onDragLeave={this.onDragLeave}
@@ -275,10 +272,12 @@ export default class DropContainer extends React.Component {
  * Type Checks
  * @type {Object}
  */
-const { string } = React.PropTypes;
+const { string, func, array } = React.PropTypes;
 
 DropContainer.propTypes = {
    accept:            string.isRequired,
    buttonStyle:       string,
-   buttonText:        string
+   buttonText:        string,
+   files:             array,
+   onAdd:             func
 };

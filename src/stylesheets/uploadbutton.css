@@ -74,7 +74,7 @@ input[type="file"].inputHidden {
 /* Text inside the button */
 .buttonTextSpan {
   font-weight: 400;
-  font-family: $font-family;
+  font-family: $primary-font;
   line-height: 32px;
 }
 
@@ -117,7 +117,7 @@ input[type="checkbox"].toggle {
 
   &.raised {
     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    /*transition-delay: 0.2s;*/
+    transition-delay: 0.2s;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     $:acive {
       opacity: 1;
